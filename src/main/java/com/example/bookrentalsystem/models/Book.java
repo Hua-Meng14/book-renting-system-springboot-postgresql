@@ -1,4 +1,4 @@
-package com.example.bookrentalsystem.controllers;
+package com.example.bookrentalsystem.models;
 
 import jakarta.persistence.*;
 
