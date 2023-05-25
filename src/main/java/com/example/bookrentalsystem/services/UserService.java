@@ -5,6 +5,7 @@ import com.example.bookrentalsystem.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -43,6 +44,10 @@ public class UserService {
             user.setUsername(updatedUser.getUsername());
             user.setPassword(updatedUser.getPassword());
             user.setEmail(updatedUser.getEmail());
+
+            return userRepository.save(user);
+        } else {
+            throw new NoSuchElementException("User not found");
         }
     }
 }
