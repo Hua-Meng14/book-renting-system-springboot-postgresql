@@ -36,4 +36,13 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
+    public User updateUser(Long userId, User updatedUser) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if(optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setUsername(updatedUser.getUsername());
+            user.setPassword(updatedUser.getPassword());
+            user.setEmail(updatedUser.getEmail());
+        }
+    }
 }

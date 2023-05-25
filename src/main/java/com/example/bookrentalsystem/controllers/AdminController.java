@@ -56,7 +56,7 @@ public class AdminController {
     @PostMapping("/rental-requests/{requestId}accept")
     public ResponseEntity<RentalRequest> acceptRentalRequest(@PathVariable Long requestId) {
         rentalRequestService.acceptRentalRequest(requestId);
-        return new ResponseEntity<>(HttpStatus.OK)
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/rental-requests")

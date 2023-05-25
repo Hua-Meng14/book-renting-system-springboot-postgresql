@@ -18,6 +18,8 @@ public class RentalRequest {
 
     private boolean accepted;
 
+    private String status;
+
     // Constructor
     public RentalRequest() {
 
@@ -60,6 +62,14 @@ public class RentalRequest {
 
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }
