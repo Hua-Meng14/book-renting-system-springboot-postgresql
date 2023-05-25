@@ -28,6 +28,10 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+//    public User updateUser(Long userId, User updatedUser) {
+//        return updatedUser;
+//    }
+
     public void deleteUser(Long userId){
         userRepository.deleteById(userId);
     }
