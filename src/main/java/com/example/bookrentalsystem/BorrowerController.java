@@ -44,13 +44,14 @@ public class BorrowerController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    // Working
     @GetMapping("/api/borrower/books")
     public ResponseEntity<List<Book>> getAllBooks() {
         List<Book> books = bookService.getAllBooks();
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    // Not Yet test -> dun know what is the expected format for request bodoy
+    // Working
     @PostMapping("/api/borrower/rental-requests")
     public ResponseEntity<RentalRequest> createRentalRequest(@RequestBody RentalRequest rentalRequest) {
         RentalRequest createdRequest = rentalRequestService.createRentalRequest(rentalRequest);
@@ -64,7 +65,7 @@ public class BorrowerController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    // Not Yet test -> have to create book by admin
+    // Working
     @GetMapping("/api/borrower/books/{bookId}")
     public ResponseEntity<Book> getBookById(@PathVariable Long bookId) {
         return bookService.getBookById(bookId)
@@ -72,7 +73,7 @@ public class BorrowerController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    // Not yet test -> to have create book by admin
+    // Working
     @GetMapping("/api/borrower/books/search")
     public ResponseEntity<List<Book>> searchBookByTitle(@RequestParam String keyword) {
         List<Book> books = bookService.searchBookByTitle(keyword);
