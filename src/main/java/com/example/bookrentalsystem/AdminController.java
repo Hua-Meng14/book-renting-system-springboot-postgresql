@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/admin")
+//@RequestMapping("/api/admin")
 public class AdminController {
     private final BookService bookService;
     private final RentalRequestService rentalRequestService;
@@ -28,38 +28,38 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @PostMapping("/books")
+    @PostMapping("/admin/books")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         Book createdBook = bookService.createBook(book);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
 
-    @GetMapping("/books/{bookId}")
+    @GetMapping("/admin/books/{bookId}")
     public ResponseEntity<Book> getBookById(@PathVariable Long bookId){
         return bookService.getBookById(bookId)
                 .map(book -> new ResponseEntity<>(book, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PutMapping("/books/{bookId}")
+    @PutMapping("/admin/books/{bookId}")
     public ResponseEntity<Book> updateBookStock(@PathVariable Long bookId, @RequestBody int stock) {
         bookService.updateBookStock(bookId, stock);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/books/{bookId}")
+    @DeleteMapping("/admin/books/{bookId}")
     public ResponseEntity<Book> deleteBook(@PathVariable Long bookId) {
         bookService.deleteBook(bookId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/rental-requests/{requestId}accept")
+    @PostMapping("/admin/rental-requests/{requestId}accept")
     public ResponseEntity<RentalRequest> acceptRentalRequest(@PathVariable Long requestId) {
         rentalRequestService.acceptRentalRequest(requestId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/rental-requests")
+    @GetMapping("/admin/rental-requests")
     public ResponseEntity<List<RentalRequest>> getAllRentalRequest(){
         List<RentalRequest> rentalRequests = rentalRequestService.getAllRentalRequests();
         return new ResponseEntity<>(rentalRequests, HttpStatus.OK);

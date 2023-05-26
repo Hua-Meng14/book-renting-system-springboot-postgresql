@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/borrower")
+//@RequestMapping("api/borrower")
 public class BorrowerController {
     private final UserService userService;
     private final BookService bookService;
@@ -29,51 +29,59 @@ public class BorrowerController {
     }
 
 
-    @PostMapping("/users")
+    // Working
+    @PostMapping("/api/borrower")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User createdUser = userService.createUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    @GetMapping("/users/{userId}")
+    // Working
+    @GetMapping("/api/borrower/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId)
                 .map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/books")
+    @GetMapping("/api/borrower/books")
     public ResponseEntity<List<Book>> getAllBooks() {
         List<Book> books = bookService.getAllBooks();
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @PostMapping("/rental-requests")
+    // Not Yet test -> dun know what is the expected format for request bodoy
+    @PostMapping("/api/borrower/rental-requests")
     public ResponseEntity<RentalRequest> createRentalRequest(@RequestBody RentalRequest rentalRequest) {
         RentalRequest createdRequest = rentalRequestService.createRentalRequest(rentalRequest);
         return new ResponseEntity<>(createdRequest, HttpStatus.CREATED);
     }
 
-    @PutMapping("/users/{userId}")
+    // Working
+    @PutMapping("/api/borrower/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
         User user = userService.updateUser(userId, updatedUser);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("/books/{bookId}")
+    // Not Yet test -> have to create book by admin
+    @GetMapping("/api/borrower/books/{bookId}")
     public ResponseEntity<Book> getBookById(@PathVariable Long bookId) {
         return bookService.getBookById(bookId)
                 .map(book -> new ResponseEntity<>(book, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/books/search")
+    // Not yet test -> to have create book by admin
+    @GetMapping("/api/borrower/books/search")
     public ResponseEntity<List<Book>> searchBookByTitle(@RequestParam String keyword) {
         List<Book> books = bookService.searchBookByTitle(keyword);
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @GetMapping("/rental-requests")
+
+    // Working
+    @GetMapping("/api/borrower/rental-requests")
     public ResponseEntity<List<RentalRequest>> getRentalRequestByBorrowers(@RequestParam Long borrowerId) {
         User borrower = userService.getUserById(borrowerId).orElse(null);
         if (borrower == null) {
@@ -83,7 +91,8 @@ public class BorrowerController {
         return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
     }
 
-    @GetMapping("/books/search/author")
+    // Working
+    @GetMapping("/api/borrower/books/search/author")
     public ResponseEntity<List<Book>> searchBooksByAuthor(@RequestParam String author) {
         List<Book> books = bookService.searchBookByAuthor(author);
         return new ResponseEntity<>(books, HttpStatus.OK);
@@ -95,7 +104,8 @@ public class BorrowerController {
 //        return new ResponseEntity<>(books, HttpStatus.OK);
 //    }
 
-    @GetMapping("/rental-requests/books/{bookId}")
+    // Working
+    @GetMapping("/api/borrower/rental-requests/books/{bookId}")
     public ResponseEntity<List<RentalRequest>> getRentalRequestsByBook(@PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId).orElse(null);
         if (book == null) {
@@ -105,7 +115,8 @@ public class BorrowerController {
         return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
     }
 
-    @GetMapping("/rental-requests")
+    // Working
+    @GetMapping("/api/borrower/rental-requests-by-accepted")
     public ResponseEntity<List<RentalRequest>> getRentalRequestByAcceptedStatus(@RequestParam boolean accepted) {
         List<RentalRequest> rentalRequests = rentalRequestService.getRentalRequestByAccepted(accepted);
         return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
