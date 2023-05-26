@@ -89,11 +89,11 @@ public class BorrowerController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @GetMapping("/books/search/genre")
-    public ResponseEntity<List<Book>> searchBooksByGenre(@RequestParam String genre) {
-        List<Book> books = bookService.searchBookByGenre(genre);
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
+//    @GetMapping("/books/search/genre")
+//    public ResponseEntity<List<Book>> searchBooksByGenre(@RequestParam String genre) {
+//        List<Book> books = bookService.searchBookByGenre(genre);
+//        return new ResponseEntity<>(books, HttpStatus.OK);
+//    }
 
     @GetMapping("/rental-requests/books/{bookId}")
     public ResponseEntity<List<RentalRequest>> getRentalRequestsByBook(@PathVariable Long bookId) {

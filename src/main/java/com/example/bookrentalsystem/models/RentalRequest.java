@@ -1,10 +1,8 @@
 package com.example.bookrentalsystem.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
+@Entity
 public class RentalRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

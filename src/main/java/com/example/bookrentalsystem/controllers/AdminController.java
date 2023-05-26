@@ -65,11 +65,11 @@ public class AdminController {
         return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
     }
 
-    @GetMapping("/rental-requests")
-    public ResponseEntity<List<RentalRequest>> getRentalRequestByStatus(@RequestParam String status) {
-        List<RentalRequest> rentalRequests = rentalRequestService.getRentalRequestByStatus(status);
-        return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
-    }
+//    @GetMapping("/rental-requests")
+//    public ResponseEntity<List<RentalRequest>> getRentalRequestByStatus(@RequestParam String status) {
+//        List<RentalRequest> rentalRequests = rentalRequestService.getRentalRequestByStatus(status);
+//        return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
+//    }
 
     @DeleteMapping("/rental-requests/{requestId}")
     public ResponseEntity<Void> deleteRentalRequest(@PathVariable Long requestId) {
@@ -103,13 +103,13 @@ public class AdminController {
         return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
     }
 
-    @GetMapping("/rental-requests/book/{bookId}/status/{status}")
-    public ResponseEntity<List<RentalRequest>> getRentalRequestByBookAndStatus(@PathVariable Long bookId, @PathVariable String status) {
-        Book book = bookService.getBookById(bookId).orElse(null);
-        if(book == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        List<RentalRequest> rentalRequests = rentalRequestService.getRentalRequestByBookAndStatus(book, status);
-        return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
-    }
+//    @GetMapping("/rental-requests/book/{bookId}/status/{status}")
+//    public ResponseEntity<List<RentalRequest>> getRentalRequestByBookAndStatus(@PathVariable Long bookId, @PathVariable String status) {
+//        Book book = bookService.getBookById(bookId).orElse(null);
+//        if(book == null) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        List<RentalRequest> rentalRequests = rentalRequestService.getRentalRequestByBookAndStatus(book, status);
+//        return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
+//    }
 }

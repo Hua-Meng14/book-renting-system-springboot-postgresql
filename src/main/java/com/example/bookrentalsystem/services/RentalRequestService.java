@@ -5,18 +5,21 @@ import com.example.bookrentalsystem.models.RentalRequest;
 import com.example.bookrentalsystem.models.User;
 import com.example.bookrentalsystem.repositories.RentalRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Component
 @Service
 public class RentalRequestService {
     private final RentalRequestRepository rentalRequestRepository;
 
     @Autowired
-    public RentalRequestService(RentalRequestRepository rentalRequestRepository) {
+    public RentalRequestService(@Qualifier("rentalrequests") RentalRequestRepository rentalRequestRepository) {
         this.rentalRequestRepository = rentalRequestRepository;
     }
 
@@ -44,9 +47,9 @@ public class RentalRequestService {
         return rentalRequestRepository.findByAccepted(accepted);
     }
 
-    public List<RentalRequest> getRentalRequestByStatus(String status) {
-        return rentalRequestRepository.findByStatus(status);
-    }
+//    public List<RentalRequest> getRentalRequestByStatus(String status) {
+//        return rentalRequestRepository.findByStatus(status);
+//    }
 
     public RentalRequest updateRentalReqeuestStatus(Long requestId, String status) {
         Optional<RentalRequest> optionalRentalRequest = rentalRequestRepository.findById(requestId);
@@ -83,7 +86,7 @@ public class RentalRequestService {
         }
     }
 
-    public List<RentalRequest> getRentalRequestByBookAndStatus(Book book, String status) {
-        return rentalRequestRepository.findByBookAndStatus(book, status);
-    }
+//    public List<RentalRequest> getRentalRequestByBookAndStatus(Book book, String status) {
+//        return rentalRequestRepository.findByBookAndStatus(book, status);
+//    }
 }

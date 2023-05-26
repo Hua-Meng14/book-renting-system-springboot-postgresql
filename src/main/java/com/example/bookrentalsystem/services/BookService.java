@@ -3,17 +3,20 @@ package com.example.bookrentalsystem.services;
 import com.example.bookrentalsystem.models.Book;
 import com.example.bookrentalsystem.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 @Service
 public class BookService {
     private final BookRepository bookRepository;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
+    public BookService(@Qualifier("books") BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
@@ -50,7 +53,7 @@ public class BookService {
         return bookRepository.findByAuthorContaining(author);
     }
 
-    public List<Book> searchBookByGenre(String genre) {
-        return bookRepository.findByGenreContainingIgnoreCase(genre);
-    }
+//    public List<Book> searchBookByGenre(String genre) {
+//        return bookRepository.findByGenreContainingIgnoreCase(genre);
+//    }
 }

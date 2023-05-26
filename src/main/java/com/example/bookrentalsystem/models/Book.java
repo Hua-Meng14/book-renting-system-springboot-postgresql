@@ -8,7 +8,6 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
     private String author;
     private int stock;
@@ -17,7 +16,6 @@ public class Book {
     public Book(){
 
     }
-
     public Book(String title, String author, int stock) {
         this.title = title;
         this.author = author;

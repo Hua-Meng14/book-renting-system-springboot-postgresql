@@ -3,17 +3,20 @@ package com.example.bookrentalsystem.services;
 import com.example.bookrentalsystem.models.User;
 import com.example.bookrentalsystem.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Component
 @Service
 public class UserService {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(@Qualifier("users") UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
