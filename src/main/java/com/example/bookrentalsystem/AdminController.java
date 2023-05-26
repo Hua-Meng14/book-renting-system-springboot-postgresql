@@ -57,7 +57,7 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    // Not Yet test -> have to create rental request first
+    // Working
     @PostMapping("/admin/rental-requests/accept/{requestId}")
     public ResponseEntity<RentalRequest> acceptRentalRequest(@PathVariable Long requestId) {
         rentalRequestService.acceptRentalRequest(requestId);
@@ -77,14 +77,14 @@ public class AdminController {
 //        return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
 //    }
 
-    // Not Yet Test -> have to create rental request first
+    // Working
     @DeleteMapping("/admin/rental-requests/{requestId}")
     public ResponseEntity<Void> deleteRentalRequest(@PathVariable Long requestId) {
         rentalRequestService.deleteRentalRequest(requestId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    // Not Yet test -> have to create rental request first
+    // Working
     @PutMapping("/admin/rental-requests/{requestId}/status")
     public ResponseEntity<RentalRequest> updateRentalRequestStatus(@PathVariable Long requestId, @RequestParam String status) {
         RentalRequest rentalRequest = rentalRequestService.updateRentalRequestStatus(requestId, status);
@@ -103,7 +103,7 @@ public class AdminController {
         return new ResponseEntity<>(rentalRequests, HttpStatus.OK);
     }
 
-    // Not Found -> have to create rental request first
+    // Working
     @GetMapping("/admin/rental-request/book/{bookId}")
     public ResponseEntity<List<RentalRequest>> getRentalRequestByBook(@PathVariable Long bookId){
         Book book = bookService.getBookById(bookId).orElse(null);
