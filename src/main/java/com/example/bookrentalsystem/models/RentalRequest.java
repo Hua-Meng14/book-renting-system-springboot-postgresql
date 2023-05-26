@@ -24,10 +24,11 @@ public class RentalRequest {
 
     }
 
-    public RentalRequest(User borrower, Book book, boolean accepted) {
+    public RentalRequest(User borrower, Book book, boolean accepted, String status) {
         this.borrower = borrower;
         this.book = book;
         this.accepted = accepted;
+        this.status = status;
     }
 
     // Getters and Setters
@@ -43,7 +44,7 @@ public class RentalRequest {
         return borrower;
     }
 
-    public void setBorrower(User borrower) {
+    public void setBorrowerId(User borrower) {
         this.borrower = borrower;
     }
 
@@ -70,5 +71,6 @@ public class RentalRequest {
     public void setStatus(String status) {
         this.status = status;
     }
+
 
 }
