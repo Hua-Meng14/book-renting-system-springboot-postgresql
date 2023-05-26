@@ -3,6 +3,7 @@ package com.example.bookrentalsystem.models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "rental_request")
 public class RentalRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

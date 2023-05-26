@@ -1,4 +1,4 @@
-package com.example.bookrentalsystem.controllers;
+package com.example.bookrentalsystem;
 
 
 import com.example.bookrentalsystem.models.Book;
